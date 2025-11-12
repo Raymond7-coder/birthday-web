@@ -160,4 +160,23 @@ document.addEventListener('DOMContentLoaded', () => {
             firework.addEventListener('animationend', () => firework.remove());
         }
     }
+    unfoldButton.addEventListener('click', async () => {
+  transitionToStep('step4');
+  startCelebrationAnimations();
+
+  try {
+    const a = backgroundMusic;
+    a.currentTime = 0;
+    a.volume = 0;
+    await a.play();
+    // fade in
+    const target = 0.6, steps = 16, ms = 800;
+    let i = 0;
+    const t = setInterval(() => {
+      i++; a.volume = Math.min(target, (i/steps)*target);
+      if (i >= steps) clearInterval(t);
+    }, ms/steps);
+  } catch (e) {
+    console.warn('Audio blocked', e);
+  }
 });
