@@ -572,3 +572,21 @@ body {
     .cake { transform: scale(0.7); }
     .envelope { transform: scale(0.7); } /* Even smaller envelope */
 }
+/* === Fit final screen without clipping === */
+#step4 .celebration-container{
+  overflow: auto;      /* allow scroll inside step 4 only */
+  padding: 32px 0;     /* breathing room top/bottom */
+}
+
+#step4 .celebration-card{
+  margin: 0 auto;      /* keep centered */
+  max-width: 700px;    /* keep your existing width */
+}
+
+/* Shrink a bit on short screens to reduce scrolling */
+@media (max-height: 800px){
+  .recipient-name{ font-size: 3.6rem; }
+  .main-greeting { font-size: 2.2rem; }
+  .final-wish    { font-size: 1rem; }
+  .cake{ transform: scale(0.85); }
+}
